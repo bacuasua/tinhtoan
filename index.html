@@ -1,581 +1,116 @@
 <!doctype html>
 <html lang="vi">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=5,viewport-fit=cover">
-<title>Tính Khung Thép & Kính Thang Máy 2026 - V10</title>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Tính Khung Thép & Kính Thang Máy - Secure Cloud</title>
 <style>
-:root{--blue:#075985;--blue2:#0ea5e9;--bg:#f1f5f9;--card:#fff;--text:#172033;--muted:#64748b;--line:#dbe4ee;--green:#047857;--orange:#c2410c;--red:#b91c1c;--purple:#6b21a8}
-*{box-sizing:border-box}body{margin:0;font-family:Inter,Segoe UI,Arial,sans-serif;background:var(--bg);color:var(--text)}
-.header{background:linear-gradient(125deg,#063c5c,#0875a8);color:#fff;padding:22px 20px;position:relative}.header-inner{max-width:1480px;margin:auto;text-align:center;position:relative}.company-name{margin:0 0 7px;font-size:28px;font-weight:850;letter-spacing:.3px;text-transform:uppercase}.header h1{margin:0;font-size:22px;font-weight:750;letter-spacing:.7px}.design-credit{position:absolute;right:22px;bottom:10px;font-size:11px;font-style:italic;opacity:.82;white-space:nowrap}
-.container{max-width:1800px;margin:20px auto;padding:0 14px 42px}.layout{display:block}.input-card{margin-bottom:16px}.card{background:#fff;border:1px solid var(--line);border-radius:13px;box-shadow:0 7px 24px rgba(15,23,42,.06);overflow:hidden}.card-title{padding:14px 17px;border-bottom:1px solid var(--line);font-weight:800;color:#0c4a6e;display:flex;justify-content:space-between;align-items:center;gap:10px}.card-body{padding:16px}
-.form-grid{display:grid;grid-template-columns:repeat(4,minmax(180px,1fr));gap:11px}.field{display:flex;flex-direction:column;gap:5px}.field.full{grid-column:1/-1}.field label{font-size:12.5px;font-weight:700;color:#475569}.field input,.field select,.formula-input,.config-input{width:100%;border:1px solid #cbd5e1;border-radius:8px;padding:8px 10px;font:inherit;background:#fff;color:#172033}.field input,.field select{height:40px}.field input:focus,.field select:focus,.formula-input:focus,.config-input:focus{outline:2px solid #bae6fd;border-color:#38bdf8}.floors{display:grid;grid-template-columns:repeat(6,minmax(130px,1fr));gap:9px}.section-label{font-size:13px;font-weight:800;color:#0c4a6e;margin:15px 0 9px;padding-top:13px;border-top:1px dashed #cbd5e1}.actions{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:15px}.btn{min-height:42px;border:0;border-radius:8px;font-weight:750;cursor:pointer;padding:8px 12px}.btn-primary{background:#0284c7;color:#fff}.btn-light{background:#e2e8f0;color:#334155}.btn-green{background:#0f766e;color:#fff}.btn-orange{background:#c2410c;color:#fff}.btn-red{background:#b91c1c;color:#fff}.btn-small{min-height:34px;font-size:12px;padding:6px 10px}.error{display:none;margin-top:11px;padding:10px;border-radius:8px;background:#fef2f2;color:#991b1b;font-size:13px;white-space:pre-wrap}
-.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:11px;margin-bottom:14px}.kpi{border:1px solid var(--line);border-radius:11px;padding:14px;background:linear-gradient(180deg,#fff,#f8fafc)}.kpi small{display:block;color:var(--muted);margin-bottom:6px}.kpi strong{font-size:22px;color:#075985}.kpi.total{background:linear-gradient(135deg,#075985,#0ea5e9);border:0}.kpi.total small,.kpi.total strong{color:#fff}.kpi.glass{background:linear-gradient(135deg,#6b21a8,#9333ea);border:0}.kpi.glass small,.kpi.glass strong{color:#fff}.toolbar{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:16px 0 10px;flex-wrap:wrap}.toolbar h2{font-size:17px;margin:0}.toolbar-side{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.density-inline{display:flex;align-items:center;gap:7px;font-size:12.5px;font-weight:700;color:#475569}.density-inline input{width:82px;height:34px;border:1px solid #cbd5e1;border-radius:7px;padding:5px 8px;font:inherit;text-align:center;background:#fff}.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:9px}table{width:100%;border-collapse:collapse;min-width:760px}.detail-table{min-width:1480px}.detail-table thead tr:first-child th{background:#dff1fa}.detail-table thead tr:nth-child(2) th{text-align:center}.detail-table td:nth-child(n+4):nth-child(-n+9){text-align:center;background:#fbfdff}th,td{padding:9px 10px;border-bottom:1px solid #e8eef5;text-align:right;font-size:13px}th{background:#eaf5fb;color:#075985;font-size:12.5px;white-space:nowrap;position:sticky;top:0}th:first-child,td:first-child{text-align:left}tfoot td{font-weight:800;background:#f0f9ff;color:#075985}.badge{display:inline-flex;padding:5px 9px;border-radius:999px;background:#dcfce7;color:#166534;font-size:12px;font-weight:700}
-.glass-matrix-select,.floor-quick-select{height:34px;border:1px solid #cbd5e1;border-radius:6px;padding:2px 6px;font-size:12px;background:#fff;font-weight:700;width:100%;max-width:160px}
-.floor-quick-select{background:#f0f9ff;border-color:#0284c7;color:#0369a1}
-.formula-panel{display:none!important;margin-top:16px}.formula-help{background:#f8fafc;border:1px solid var(--line);border-radius:9px;padding:11px;font-size:12px;line-height:1.55;color:#475569;margin-bottom:12px}.formula-help code{background:#e2e8f0;padding:2px 5px;border-radius:4px;color:#0f172a}.formula-table{min-width:1320px}.formula-table td{vertical-align:top}.formula-input{min-width:150px;height:36px;font-family:Consolas,monospace;font-size:12px;padding:6px 8px}.profile-dim-input{width:72px;min-width:62px;height:32px;border:1px solid #94a3b8;border-radius:6px;text-align:center;padding:4px 6px;font:inherit;background:#fff}.supply-check{width:20px;height:20px;accent-color:#0284c7;cursor:pointer}.not-supplied{opacity:.55}.formula-input.wide{min-width:280px}.config-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.config-box{border:1px solid var(--line);border-radius:9px;padding:10px;background:#f8fafc}.config-box label{display:block;font-size:12px;font-weight:800;color:#475569;margin-bottom:5px}.config-input{font-family:Consolas,monospace;font-size:12px;height:37px}.status{font-size:12px;font-weight:700;color:#166534}.formula-error{color:#b91c1c;font-size:11px;text-align:left!important}.tabs{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:12px}.tab{border:1px solid #cbd5e1;background:#fff;color:#475569;border-radius:8px;padding:8px 11px;font-weight:700;cursor:pointer}.tab.active{background:#075985;color:#fff;border-color:#075985}.tab-content{display:none}.tab-content.active{display:block}
-.door-info-badge{background:#e0f2fe;color:#0369a1;padding:6px 10px;border-radius:6px;font-size:12px;font-weight:700;margin-top:6px;display:inline-block}
-
-.view-mode-bar{display:flex;background:#e2e8f0;padding:4px;border-radius:10px;gap:4px;margin-bottom:14px}
-.view-mode-btn{flex:1;padding:10px 12px;border:0;border-radius:7px;background:transparent;font-weight:800;font-size:13px;color:#475569;cursor:pointer;transition:all .2s}
-.view-mode-btn.active{background:#fff;color:#075985;box-shadow:0 2px 8px rgba(0,0,0,.08)}
-
-body.mode-steel .glass-only { display: none !important; }
-body.mode-glass .steel-only { display: none !important; }
-body.mode-glass .kpis { grid-template-columns: repeat(2, 1fr) !important; }
-body.mode-steel .kpis { grid-template-columns: repeat(3, 1fr) !important; }
-
-@media(max-width:1200px){.form-grid{grid-template-columns:repeat(2,minmax(180px,1fr))}.floors{grid-template-columns:repeat(4,minmax(130px,1fr))}.kpis{grid-template-columns:1fr 1fr}}
-@media(max-width:600px){.form-grid,.floors,.config-grid{grid-template-columns:1fr}.kpis{grid-template-columns:1fr}.actions{grid-template-columns:1fr}.view-mode-bar{flex-direction:column}}
-@media print{
- @page{size:A4 portrait;margin:12mm}
- body{background:#fff;color:#111}
- .header{background:#fff!important;color:#111!important;border-bottom:2px solid #111;padding:10px 0 14px}
- .header-inner{max-width:none}.company-name{font-size:20px}.header h1{font-size:17px}.design-credit{color:#111;opacity:1;right:0;bottom:0;font-size:9px}
- .container{max-width:none;margin:10px 0 0;padding:0}.layout{display:block}
- .card{box-shadow:none;border:0;border-radius:0;overflow:visible}
- .input-card{display:block!important;margin:0 0 14px}
- .input-card .card-title{display:block;border-bottom:1px solid #555;padding:8px 0;font-size:17px}
- .input-card .card-title .badge,.input-card .actions,.input-card .error,.view-mode-bar{display:none!important}
- .input-card .card-body{padding:10px 0}
- .form-grid{grid-template-columns:repeat(2,1fr);gap:6px 22px}
- .floors{grid-template-columns:repeat(4,1fr);gap:6px 14px}
- .field{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:8px;border-bottom:1px dotted #bbb;padding:3px 0}
- .field.full{grid-column:1/-1}.field label{font-size:11px;color:#111}
- .field input,.field select{border:0!important;outline:0!important;padding:0!important;height:auto!important;background:transparent!important;color:#111!important;font-size:11px;appearance:none;-webkit-appearance:none}
- .section-label{margin:9px 0 5px;padding-top:7px;border-top:1px solid #777;color:#111}
- .result-card{display:block!important}
- .result-card .card-title,.result-card .toolbar,.result-card .table-wrap,.result-card .print-actions,.result-card .kpi:not(.total):not(.glass){display:none!important}
- .result-card .card-body{padding:0}
- .result-card .kpis{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:14px 0 0}
- .result-card .kpi.total,.result-card .kpi.glass{display:block;background:#fff!important;border:2px solid #111;border-radius:0;text-align:center;padding:12px}
- .result-card .kpi.total small,.result-card .kpi.total strong,.result-card .kpi.glass small,.result-card .kpi.glass strong{color:#111!important}
- .result-card .kpi.total small,.result-card .kpi.glass small{font-size:12px;font-weight:700}.result-card .kpi.total strong,.result-card .kpi.glass strong{font-size:22px}
- .formula-panel,.btn{display:none!important}
- body.mode-steel .glass-only { display: none !important; }
- body.mode-glass .steel-only { display: none !important; }
-}
+:root{--blue:#075985;--bg:#f1f5f9;--line:#dbe4ee}
+*{box-sizing:border-box}body{margin:0;font-family:Segoe UI,Arial,sans-serif;background:var(--bg);color:#172033;padding:15px}
+.header{background:linear-gradient(125deg,#063c5c,#0875a8);color:#fff;padding:20px;text-align:center;border-radius:10px;margin-bottom:15px}
+.card{background:#fff;border:1px solid var(--line);border-radius:10px;padding:15px;margin-bottom:15px;box-shadow:0 4px 12px rgba(0,0,0,.05)}
+.form-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px}
+.field{display:flex;flex-direction:column;gap:4px;font-size:12px;font-weight:700}
+.field input,.field select{height:38px;border:1px solid #cbd5e1;border-radius:6px;padding:6px 10px;font:inherit}
+.btn{background:#0284c7;color:#fff;border:0;padding:12px;border-radius:8px;font-weight:700;cursor:pointer;width:100%;font-size:15px;margin-top:10px}
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:15px}
+.kpi{background:#f8fafc;border:1px solid var(--line);padding:12px;border-radius:8px;text-align:center}
+.kpi strong{font-size:20px;color:#075985;display:block}
+table{width:100%;border-collapse:collapse;margin-top:10px;font-size:13px}
+th,td{padding:8px;border:1px solid #e2e8f0;text-align:center}th{background:#eaf5fb;color:#075985}
+.loading{display:none;text-align:center;font-weight:700;color:#0284c7;padding:10px}
 </style>
 </head>
-<body class="mode-all">
-<header class="header"><div class="header-inner"><div class="company-name">Thang máy Tokyo</div><h1>TÍNH KHỐI LƯỢNG KHUNG THÉP & DIỆN TÍCH KÍNH</h1></div><div class="design-credit">Design by Samurai</div></header>
-<main class="container"><div class="layout">
-<section class="card input-card">
-<div class="card-title">Thông số kỹ thuật hố thang & Kính <span id="saveStatus" style="display:none"></span></div>
-<div class="card-body">
+<body>
+<div class="header"><h2>TÍNH KHỐI LƯỢNG KHUNG THÉP & KÍNH</h2></div>
 
-<div class="view-mode-bar">
- <button class="view-mode-btn active" data-mode="all">🔍 Hiện tất cả (Khung & Kính)</button>
- <button class="view-mode-btn" data-mode="steel">🏗️ Chỉ tính Khung Thép</button>
- <button class="view-mode-btn" data-mode="glass">🪟 Chỉ tính Kính</button>
+<div class="card">
+ <h3>Thông số hố thang</h3>
+ <div class="form-grid">
+  <div class="field"><label>Rộng hố AH (mm)</label><input id="width" type="number" value="1390"></div>
+  <div class="field"><label>Sâu hố BH (mm)</label><input id="depth" type="number" value="1720"></div>
+  <div class="field"><label>Số tầng N</label><input id="floorCount" type="number" value="4" onchange="buildFloors()"></div>
+  <div class="field"><label>Pit (mm)</label><input id="pit" type="number" value="1040"></div>
+  <div class="field"><label>PM - Phòng máy (mm)</label><input id="oh" type="number" value="0"></div>
+  <div class="field"><label>Sâu cột trước (mm)</label><input id="frontColDepth" type="number" value="120"></div>
+  <div class="field"><label>Dự phòng (%)</label><input id="safetyRate" type="number" value="0"></div>
+ </div>
+ 
+ <h3 style="margin-top:15px">Chiều cao tầng (mm)</h3>
+ <div class="form-grid" id="floorInputs"></div>
+
+ <button class="btn" onclick="calculateCloud()">🚀 TÍNH TOÁN (BẢO MẬT CLOUD)</button>
+ <div class="loading" id="loading">⌛ Đang gửi dữ liệu và tính toán trên Server bí mật...</div>
 </div>
 
-<div class="form-grid">
-<div class="field full steel-only"><label>Cấu hình khung thép</label><select id="model"><option value="1">KT-Mẫu 1 (Tiêu chuẩn)</option><option value="2">KT-Mẫu 2 (Không nẹp sập)</option></select></div>
-<div class="field"><label>Rộng hố AH (mm)</label><input id="width" type="number" value="1390"></div><div class="field"><label>Sâu hố BH (mm)</label><input id="depth" type="number" value="1720"></div>
-<div class="field"><label>Số tầng N</label><input id="floorCount" type="number" min="2" max="40" value="4"></div><div class="field steel-only"><label>Độ dày thép t (mm)</label><input id="thickness" type="number" step="0.1" value="4"></div>
-<div class="field"><label>Pit (Không kính) (mm)</label><input id="pit" type="number" value="1040"></div><div class="field"><label>PM - Phòng máy (mm)</label><input id="oh" type="number" value="0"></div>
-<div class="field full"><label>Chiều sâu Cột Trước (mm) - [Chuẩn: 120, Đặc biệt: 320, 350...]</label><input id="frontColDepth" type="number" value="120"></div>
+<div class="card">
+ <h3>Kết quả tổng hợp</h3>
+ <div class="kpis">
+  <div class="kpi"><small>Tổng chiều cao</small><strong id="resH">0 mm</strong></div>
+  <div class="kpi"><small>Tổng Thép</small><strong id="resSteel">0 kg</strong></div>
+  <div class="kpi"><small>Tổng Kính</small><strong id="resGlass">0 m²</strong></div>
+ </div>
+
+ <h4>Chi tiết Kính Cắt (m²)</h4>
+ <table><thead><tr><th>Tên vách</th><th>Kiểu</th><th>SL</th><th>Rộng</th><th>Cao</th><th>m²/Tấm</th><th>Tổng m²</th></tr></thead><tbody id="glassBody"></tbody></table>
+
+ <h4>Chi tiết Khung Thép (kg)</h4>
+ <table><thead><tr><th>Tên cấu kiện</th><th>Số lượng</th><th>Dài</th><th>Tổng kg</th></tr></thead><tbody id="steelBody"></tbody></table>
 </div>
-
-<div class="section-label glass-only">Thông số Cửa Tầng & Khe hở Kính</div>
-<div class="form-grid glass-only">
-<div class="field"><label>Rộng thông thủy cửa (mm)</label><input id="doorClearWidth" type="number" value="600"></div>
-<div class="field"><label>Kích thước 1 đố cửa (mm)</label><input id="doorStileWidth" type="number" value="50"></div>
-<div class="field"><label>Chiều cao cửa tầng (mm)</label><input id="doorHeight" type="number" value="2300"></div>
-<div class="field"><label>Loại Kính / Độ dày</label><select id="glassType"><option value="10.38mm">Kính Dán An Toàn 10.38mm</option><option value="10mm">Kính Cường Lực 10mm</option><option value="12mm">Kính Cường Lực 12mm</option></select></div>
-<div class="field"><label>Dung sai khe hở kính phủ ngoài (mm)</label><input id="glassGap" type="number" value="5"></div>
-<div class="field"><label>Hệ số an toàn / Dự phòng (%)</label><input id="safetyRate" type="number" step="0.5" value="0"></div>
-<div class="field full"><div class="door-info-badge" id="doorTotalBadge">Khoảng trống cửa tầng trừ kính: 600 + (2 x 50) = 700 mm (Cao 2300 mm)</div></div>
-</div>
-
-<div class="section-label glass-only">Cấu hình chi tiết Lắp Kính Từng Tầng (Tự động tổng hợp theo Tầng & Mặt)</div>
-<div class="table-wrap glass-only" style="max-height: 380px; overflow-y: auto;">
- <table style="min-width: 100%; text-align: center;">
-  <thead>
-   <tr>
-    <th style="text-align: left;">Tầng / Khoang Hố</th>
-    <th style="text-align: center; color:#0284c7;">⚡ Chọn nhanh</th>
-    <th style="text-align: center;">Mặt Trước (Cửa)</th>
-    <th style="text-align: center;">Mặt Sau</th>
-    <th style="text-align: center;">Mặt Trái</th>
-    <th style="text-align: center;">Mặt Phải</th>
-    <th style="text-align: center; color:#6b21a8; background:#f3e8ff;">Tổng Tầng (m²)</th>
-   </tr>
-  </thead>
-  <tbody id="glassMatrixBody"></tbody>
-  <tfoot style="background:#f0f9ff; font-weight:800; color:#075985;">
-   <tr>
-    <td colspan="2" style="text-align:left; color:#0c4a6e;">TỔNG KÍNH THEO MẶT:</td>
-    <td id="m_sum_front" style="text-align:center;">0.00 m²</td>
-    <td id="m_sum_back" style="text-align:center;">0.00 m²</td>
-    <td id="m_sum_left" style="text-align:center;">0.00 m²</td>
-    <td id="m_sum_right" style="text-align:center;">0.00 m²</td>
-    <td id="m_sum_all" style="text-align:center; color:#6b21a8; background:#f3e8ff; font-size:14px;">0.00 m²</td>
-   </tr>
-  </tfoot>
- </table>
-</div>
-
-<div class="section-label">Chiều cao các tầng (mm)</div><div id="floorInputs" class="floors"></div>
-<div class="actions"><button class="btn btn-primary" id="calculate">Tính khối lượng & Kính</button><button class="btn btn-light" id="resetInputs">Khôi phục thông số</button></div>
-<div id="error" class="error"></div>
-</div></section>
-
-<section>
-<div class="card result-card"><div class="card-title">Kết quả tính toán tổng hợp</div><div class="card-body">
-<div class="kpis">
-<div class="kpi"><small>Tổng chiều cao H</small><strong id="totalHeight">0 mm</strong></div>
-<div class="kpi total steel-only"><small>Tổng khối lượng Thép</small><strong id="totalWeight">0 kg</strong></div>
-<div class="kpi glass glass-only"><small>Tổng diện tích Kính (Đã cộng % dự phòng)</small><strong id="totalGlassM2">0 m²</strong></div>
-<div class="kpi steel-only"><small>Mẫu khung thép</small><strong id="kpiModel">Mẫu 1</strong></div>
-</div>
-<div class="print-actions" style="display:flex;justify-content:center;margin:12px 0 16px"><button class="btn btn-green" onclick="window.print()">In / Lưu PDF Báo Giá</button></div>
-
-<div class="toolbar steel-only"><h2>1. Kết cấu Khung Thép chi tiết</h2><div class="toolbar-side"><label class="density-inline">Khối lượng riêng ρ (g/cm³) <input id="density" type="number" step="0.01" value="7.85"></label><span class="badge" id="modelBadge">Mẫu 1</span></div></div>
-<div class="table-wrap steel-only"><table class="detail-table"><thead>
-<tr><th rowspan="2">Chi tiết</th><th rowspan="2">Cung cấp</th><th rowspan="2">Số lượng</th><th rowspan="2">Kích thước<br>(Chiều dài)</th><th colspan="6" style="text-align:center">Biên dạng thân chính (mm)</th><th rowspan="2">Khối lượng<br>thân chính</th><th rowspan="2">Khối lượng<br>Bản mã</th><th rowspan="2">Tổng<br>Khối Lượng</th></tr>
-<tr><th>A</th><th>B</th><th>C</th><th>D</th><th>E</th><th>F</th></tr>
-</thead><tbody id="partsBody"></tbody><tfoot><tr><td colspan="12">TỔNG KHỐI LƯỢNG THÉP CẢ HỐ THANG</td><td id="tableTotal">0 kg</td></tr></tfoot></table></div>
-
-<div class="toolbar glass-only"><h2>2. Danh mục Kính ốp hố thang (B.O.M Kính Cắt - Chuẩn Thực Tế)</h2></div>
-<div class="table-wrap glass-only"><table><thead>
-<tr><th>Vị trí vách kính</th><th>Kiểu lắp</th><th>Số lượng (Tấm)</th><th>Rộng kính (mm)</th><th>Cao kính (mm)</th><th>Diện tích / Tấm (m²)</th><th>Tổng Diện Tích (m²)</th></tr>
-</thead><tbody id="glassBody"></tbody><tfoot><tr><td colspan="6">TỔNG DIỆN TÍCH KÍNH BẢO PHỦ (Chưa dự phòng)</td><td id="tableGlassNetTotal">0 m²</td></tr><tr style="background:#fef3c7;color:#92400e"><td colspan="6"><strong>TỔNG DIỆN TÍCH BÁO GIÁ (Đã cộng <span id="safetyLabel">0%</span> dự phòng)</strong></td><td id="tableGlassTotal"><strong>0 m²</strong></td></tr></tfoot></table></div>
-
-<div class="toolbar steel-only"><h2>3. Phụ kiện đi kèm</h2></div>
-<div class="table-wrap steel-only"><table><thead><tr><th>Chi tiết Phụ kiện</th><th>Số lượng</th><th>Đơn vị</th></tr></thead><tbody id="accessoryBody"></tbody></table></div>
-</div></div>
-
-<div class="card formula-panel steel-only"><div class="card-title">Công thức và hệ số có thể chỉnh sửa <span class="status" id="formulaStatus">Đang dùng công thức gốc</span></div><div class="card-body">
-<div class="tabs"><button class="tab active" data-tab="formulas">Công thức cấu kiện</button><button class="tab" data-tab="profiles">Tiết diện & hệ số</button><button class="tab" data-tab="accessories">Công thức phụ kiện</button></div>
-<div class="formula-help"><b>Biến sử dụng:</b> <code>W</code> rộng hố, <code>D</code> sâu hố, <code>N</code> số tầng, <code>t</code> độ dày, <code>pit</code>, <code>oh</code>, <code>H</code> tổng cao, <code>qN</code>/<code>qD</code> số đà, <code>lenN</code>/<code>lenD</code> chiều dài đà, <code>rho</code> khối lượng riêng. Hàm: <code>PW(...)</code>, <code>PL(...)</code>.</div>
-<div id="formulas" class="tab-content active"><div class="table-wrap"><table class="formula-table"><thead><tr><th>Chi tiết</th><th>Công thức số lượng</th><th>Công thức chiều dài</th><th>Công thức khối lượng thân</th><th>Công thức bản mã</th><th>Lỗi</th></tr></thead><tbody id="formulaBody"></tbody></table></div></div>
-<div id="profiles" class="tab-content"><div id="configGrid" class="config-grid"></div></div>
-<div id="accessories" class="tab-content"><div class="table-wrap"><table class="formula-table"><thead><tr><th>Phụ kiện</th><th>Công thức số lượng</th><th>Đơn vị</th><th>Lỗi</th></tr></thead><tbody id="accessoryFormulaBody"></tbody></table></div></div>
-<div class="actions" style="max-width:520px"><button class="btn btn-primary" id="saveFormulas">Lưu công thức</button><button class="btn btn-red" id="resetFormulas">Khôi phục công thức gốc</button></div>
-</div></div>
-</section></div></main>
 
 <script>
-const ORIGINAL={
- configs:{
-  1:{columns:[25,45,120,120,45,25],beamN:[25,45,120,45,25],beamD:[25,45,120,45,25],machine:[25,120,200,45,25],hanging:[25,45,120,45,25],reinforce:[142,100],nut1:[108,58],nut2:[108,58]},
-  2:{columns:[25,45,120,120,45,25],beamN:[22,43,100,43,22],beamD:[25,43,100,43,22],machine:[25,120,200,40,25],hanging:[25,45,120,40,25],reinforce:[142,100],nut1:[88,58],nut2:[88,58]}
- },
- supply:{
-  1:{col1:true,col2:true,col3:true,col4:true,beamN:true,beamD:true,machineN:true,machineD:true,hanging:true,reinforce:true,nut1:true,nut2:true},
-  2:{col1:true,col2:true,col3:true,col4:true,beamN:true,beamD:true,machineN:true,machineD:true,hanging:true,reinforce:true,nut1:true,nut2:true}
- },
- rows:[
-  {id:'col1',name:'Cột 1',qty:'1',len:'H',body:'PW(columns,t,H,1,10)',plate:'(N*4+3)*(PL(120,120,6,1)/2)'},
-  {id:'col2',name:'Cột 2',qty:'1',len:'H',body:'PW(columns,t,H,1,10)',plate:'(N*4+3)*(PL(120,120,6,1)/2)'},
-  {id:'col3',name:'Cột 3',qty:'1',len:'H',body:'PW(columns,t,H,1,10)',plate:'(N*4+3)*(PL(120,120,6,1)/2)'},
-  {id:'col4',name:'Cột 4',qty:'1',len:'H',body:'PW(columns,t,H,1,10)',plate:'(N*4+3)*(PL(120,120,6,1)/2)'},
-  {id:'beamN',name:'Đà Ngang',qty:'qN',len:'lenN',body:'PW(beamN,t,lenN,qN,8)+IF(model===2,((lenN+8)*2*130*rho/1e6)*qN,0)',plate:'beamN[2]*beamN[1]*rho*6/1e6*qN*2+IF(model===2,(33*lenN*1.5*rho/1e6)*qN*2,0)'},
-  {id:'beamD',name:'Đà Dọc',qty:'qD',len:'lenD',body:'PW(beamD,t,lenD,qD,8)+IF(model===2,((lenD+8)*2*130*rho/1e6)*qD,0)',plate:'beamD[2]*beamD[1]*rho*6/1e6*qD*2+IF(model===2,(33*lenN*1.5*rho/1e6)*qD*2,0)'},
-  {id:'machineN',name:'Đà Ngang Đặt Máy',qty:'2',len:'lenN',body:'PW(machine,t,lenN,2,8)',plate:'machine[2]*machine[1]*6*rho/1e6*2*2'},
-  {id:'machineD',name:'Đà Dọc Đặt Máy',qty:'2',len:'lenD',body:'PW(machine,t,lenD,2,8)',plate:'machine[2]*machine[1]*6*rho/1e6*2*2'},
-  {id:'hanging',name:'Đà Treo Thi Công',qty:'2',len:'W-45*2',body:'PW(hanging,t,W-45*2,2,8)',plate:'PL(120,200,6,2)'},
-  {id:'reinforce',name:'Mã Gia Cố',qty:'N*4',len:'null',body:'0',plate:'PL(reinforce[0],reinforce[1],t,N*4)'},
-  {id:'nut1',name:'Mã Giữ Ốc 1 Lỗ',qty:'N*5',len:'null',body:'0',plate:'PL(nut1[0],nut1[1],9,N*5)'},
-  {id:'nut2',name:'Mã Giữ Ốc 2 Lỗ',qty:'(qD/2-1)*8',len:'null',body:'0',plate:'PL(nut2[0],nut2[1],9,(qD/2-1)*8)'}
- ],
- accessories:[
-  {id:'bolt14',name:'Bulong M14',qty:'(N+1)*4*3',unit:'Bộ'},
-  {id:'bolt10',name:'Bulong M10',qty:'(qN+qD)*2+2*8+2*8+2*8+(N*4)*2',unit:'Bộ'},
-  {id:'anchor12',name:'Nở sắt M12',qty:'4*4+(N*4)*2',unit:'Bộ'}
- ]
-};
+// DÁN LINK GOOGLE APPS SCRIPT CỦA BẠN VÀO ĐÂY:
+const BACKEND_URL = "https://script.google.com/macros/s/AKfycbyqIyGzKcVvlwpuZUiwAjlxxM8VcDtv15fEaQsShxdkUVaoGcjaBb0bdVLAiFL5JJpE/exec";
 
-const clone=o=>JSON.parse(JSON.stringify(o));let state=clone(ORIGINAL);const $=id=>document.getElementById(id);
-function makeDefaultRowProfiles(){const out={1:{},2:{}};for(const m of [1,2]){for(const r of ORIGINAL.rows){const key=profileKeyForRow(r.id);out[m][r.id]=key&&Array.isArray(ORIGINAL.configs[m][key])?clone(ORIGINAL.configs[m][key]):[]}}return out}
-const fmt=(n,d=2)=>Number(n).toLocaleString('vi-VN',{useGrouping:false,minimumFractionDigits:d,maximumFractionDigits:d});const intFmt=n=>String(Math.round(n));
+function buildFloors(){
+ const n = Number(document.getElementById('floorCount').value) || 2;
+ const container = document.getElementById('floorInputs');
+ container.innerHTML = '';
+ const defaults = [3250, 3910, 3700, 3300];
+ for(let i=1; i<=n; i++){
+  container.innerHTML += `<div class="field"><label>Tầng ${i}</label><input class="fh" type="number" value="${defaults[i-1]||3400}"></div>`;
+ }
+}
 
-function loadState(){
- try{const saved=localStorage.getItem('frameFormulaStateV2');if(saved)state=JSON.parse(saved)}catch(e){state=clone(ORIGINAL)}
- if(!state.supply)state.supply=clone(ORIGINAL.supply);
- if(!state.rowProfiles)state.rowProfiles=makeDefaultRowProfiles();
- const defaults=makeDefaultRowProfiles();
- for(const m of [1,2]){
-  if(!state.supply[m])state.supply[m]=clone(ORIGINAL.supply[m]);
-  if(!state.rowProfiles[m])state.rowProfiles[m]={};
-  for(const r of ORIGINAL.rows){
-   if(typeof state.supply[m][r.id]!=='boolean')state.supply[m][r.id]=true;
-   if(!Array.isArray(state.rowProfiles[m][r.id]))state.rowProfiles[m][r.id]=clone(defaults[m][r.id]);
+async function calculateCloud(){
+ document.getElementById('loading').style.display = 'block';
+ const payload = {
+  width: document.getElementById('width').value,
+  depth: document.getElementById('depth').value,
+  floorCount: document.getElementById('floorCount').value,
+  pit: document.getElementById('pit').value,
+  oh: document.getElementById('oh').value,
+  frontColDepth: document.getElementById('frontColDepth').value,
+  safetyRate: document.getElementById('safetyRate').value,
+  floors: [...document.querySelectorAll('.fh')].map(el => Number(el.value)),
+  matrix: {} // Bảng matrix có thể truyền thêm nếu muốn
+ };
+
+ try {
+  const res = await fetch(BACKEND_URL, { method: 'POST', body: JSON.stringify(payload) });
+  const data = await res.json();
+  
+  if(data.success){
+   const d = data.data;
+   document.getElementById('resH').textContent = d.totalHeight + ' mm';
+   document.getElementById('resSteel').textContent = d.totalSteelWeight.toFixed(1) + ' kg';
+   document.getElementById('resGlass').textContent = d.totalGrossM2.toFixed(2) + ' m²';
+
+   document.getElementById('glassBody').innerHTML = d.glassList.map(g => 
+    `<tr><td>${g.name}</td><td>${g.typeLabel}</td><td>${g.qty}</td><td>${g.w}</td><td>${g.h}</td><td>${g.m2Per.toFixed(3)}</td><td><strong>${g.totalM2.toFixed(3)}</strong></td></tr>`
+   ).join('');
+
+   document.getElementById('steelBody').innerHTML = d.steelRows.map(s => 
+    `<tr><td>${s.name}</td><td>${s.qty}</td><td>${s.len||'—'}</td><td><strong>${s.total.toFixed(2)}</strong></td></tr>`
+   ).join('');
   }
+ } catch(e) {
+  alert('Có lỗi xảy ra kết nối Server!');
+ } finally {
+  document.getElementById('loading').style.display = 'none';
  }
 }
 
-function saveState(){localStorage.setItem('frameFormulaStateV2',JSON.stringify(state));$('formulaStatus').textContent='Đã lưu công thức tùy chỉnh';$('formulaStatus').classList.add('changed');$('saveStatus').textContent='Đã lưu biên dạng'}
-
-function makeSelectHtml(id, val){
- return `<select id="${id}" class="glass-matrix-select">
-  <option value="none" ${val==='none'?'selected':''}>❌ Không kính</option>
-  <option value="in" ${val==='in'?'selected':''}>🟢 Lọt trong lòng</option>
-  <option value="out" ${val==='out'?'selected':''}>🟠 Phủ ngoài khung</option>
- </select>`;
-}
-
-function buildFloorInputs(){
- let n=Math.max(2,Math.min(40,parseInt($('floorCount').value)||2));
- $('floorCount').value=n;
- let old=[...document.querySelectorAll('.floor-height')].map(x=>x.value);
- const defaultHeights=[3250,3910,3700,3300];
- $('floorInputs').innerHTML='';
- for(let i=1;i<=n;i++){
-  let d=document.createElement('div');d.className='field';
-  let defaultVal=old[i-1]??(defaultHeights[i-1]||3400);
-  d.innerHTML=`<label>Tầng ${i} (mm)</label><input class="floor-height" type="number" value="${defaultVal}">`;
-  $('floorInputs').appendChild(d);
- }
-
- let matrixState={};
- for(let i=1;i<=40;i++){
-  ['front','back','left','right'].forEach(f=>{
-   let el=$(`g_f${i}_${f}`);if(el)matrixState[`f${i}_${f}`]=el.value;
-  });
- }
- ['front','back','left','right'].forEach(f=>{
-  let el=$(`g_oh_${f}`);if(el)matrixState[`oh_${f}`]=el.value;
- });
-
- let matrixHtml='';
- for(let i=1;i<=n;i++){
-  let valFront=matrixState[`f${i}_front`]??'in';
-  let valBack=matrixState[`f${i}_back`]??'in';
-  let valLeft=matrixState[`f${i}_left`]??'in';
-  let valRight=matrixState[`f${i}_right`]??'in';
-
-  matrixHtml+=`<tr>
-   <td style="text-align:left;font-weight:700;">Tầng ${i}</td>
-   <td>
-    <select class="floor-quick-select" data-floor="f${i}">
-     <option value="">⚡ Chọn nhanh...</option>
-     <option value="none">❌ Đổi tất cả: Không kính</option>
-     <option value="in">🟢 Đổi tất cả: Lọt lòng</option>
-     <option value="out">🟠 Đổi tất cả: Phủ ngoài</option>
-    </select>
-   </td>
-   <td>${makeSelectHtml(`g_f${i}_front`, valFront)}</td>
-   <td>${makeSelectHtml(`g_f${i}_back`, valBack)}</td>
-   <td>${makeSelectHtml(`g_f${i}_left`, valLeft)}</td>
-   <td>${makeSelectHtml(`g_f${i}_right`, valRight)}</td>
-   <td id="m_row_f${i}_sum" style="font-weight:800; color:#6b21a8; background:#f3e8ff; text-align:center;">0.00 m²</td>
-  </tr>`;
- }
-
- let valOHFront=matrixState[`oh_front`]??'none';
- let valOHBack=matrixState[`oh_back`]??'none';
- let valOHLeft=matrixState[`oh_left`]??'none';
- let valOHRight=matrixState[`oh_right`]??'none';
-
- matrixHtml+=`<tr style="background:#f1f5f9;">
-  <td style="text-align:left;font-weight:800;color:#6b21a8;">Khoang PM (Phòng máy)</td>
-  <td>
-   <select class="floor-quick-select" data-floor="oh">
-    <option value="">⚡ Chọn nhanh...</option>
-    <option value="none">❌ Đổi tất cả: Không kính</option>
-    <option value="in">🟢 Đổi tất cả: Lọt lòng</option>
-    <option value="out">🟠 Đổi tất cả: Phủ ngoài</option>
-   </select>
-  </td>
-  <td>${makeSelectHtml(`g_oh_front`, valOHFront)}</td>
-  <td>${makeSelectHtml(`g_oh_back`, valOHBack)}</td>
-  <td>${makeSelectHtml(`g_oh_left`, valOHLeft)}</td>
-  <td>${makeSelectHtml(`g_oh_right`, valOHRight)}</td>
-  <td id="m_row_oh_sum" style="font-weight:800; color:#6b21a8; background:#f3e8ff; text-align:center;">0.00 m²</td>
- </tr>`;
-
- $('glassMatrixBody').innerHTML=matrixHtml;
-}
-
-function renderFormulaEditor(){
- $('formulaBody').innerHTML=state.rows.map((r,i)=>`<tr data-row="${i}"><td><input class="formula-input" data-key="name" value="${esc(r.name)}"></td><td><input class="formula-input" data-key="qty" value="${esc(r.qty)}"></td><td><input class="formula-input" data-key="len" value="${esc(r.len)}"></td><td><input class="formula-input wide" data-key="body" value="${esc(r.body)}"></td><td><input class="formula-input wide" data-key="plate" value="${esc(r.plate)}"></td><td class="formula-error" id="err-${r.id}"></td></tr>`).join('');
- const cfg=state.configs[$('model').value];const labels={columns:'Tiết diện cột',beamN:'Tiết diện đà ngang',beamD:'Tiết diện đà dọc',machine:'Tiết diện đà đặt máy',hanging:'Tiết diện đà treo',reinforce:'Mã gia cố [dài,rộng]',nut1:'Mã giữ ốc 1 lỗ',nut2:'Mã giữ ốc 2 lỗ'};
- $('configGrid').innerHTML=Object.keys(cfg).map(k=>`<div class="config-box"><label>${labels[k]||k}</label><input class="config-input" data-config="${k}" value="${esc(JSON.stringify(cfg[k]))}"></div>`).join('');
- $('accessoryFormulaBody').innerHTML=state.accessories.map((r,i)=>`<tr data-acc="${i}"><td><input class="formula-input" data-key="name" value="${esc(r.name)}"></td><td><input class="formula-input wide" data-key="qty" value="${esc(r.qty)}"></td><td><input class="formula-input" data-key="unit" value="${esc(r.unit)}"></td><td class="formula-error" id="accerr-${r.id}"></td></tr>`).join('');
-}
-function esc(s){return String(s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
-
-function syncEditorToState(){
- document.querySelectorAll('#formulaBody tr').forEach(tr=>{let r=state.rows[+tr.dataset.row];tr.querySelectorAll('[data-key]').forEach(x=>r[x.dataset.key]=x.value)});
- document.querySelectorAll('#accessoryFormulaBody tr').forEach(tr=>{let r=state.accessories[+tr.dataset.acc];tr.querySelectorAll('[data-key]').forEach(x=>r[x.dataset.key]=x.value)});
- let cfg=state.configs[$('model').value];
- document.querySelectorAll('[data-config]').forEach(x=>{try{let a=JSON.parse(x.value);if(!Array.isArray(a)||a.some(v=>!Number.isFinite(+v)))throw Error();cfg[x.dataset.config]=a.map(Number);x.style.borderColor='#cbd5e1'}catch(e){x.style.borderColor='#ef4444';throw new Error('Sai định dạng mảng tại '+x.dataset.config)}})
-}
-
-function evaluator(expr,ctx){if(String(expr).trim()==='null'||String(expr).trim()==='')return null;const names=Object.keys(ctx),vals=Object.values(ctx);return Function(...names,'"use strict"; return ('+expr+');')(...vals)}
-
-function context(){
- const model=+$('model').value,W=+$('width').value,D=+$('depth').value,N=+$('floorCount').value,t=+$('thickness').value,pit=+$('pit').value,oh=+$('oh').value,rho=+$('density').value;
- const floors=[...document.querySelectorAll('.floor-height')].map(x=>+x.value||0);
- const H=pit+oh+floors.reduce((a,b)=>a+b,0);
- const qN=Math.floor((H-pit)/1600)+1+(N*2+1),qD=(Math.floor((H-pit)/1600)+2)*2,lenN=W-240,lenD=D-240,cfg=state.configs[model];
- const PW=(profile,th,length,qty,subtract)=>((profile.reduce((a,b)=>a+b,0)-subtract*th)*rho*th*length/1e6)*qty;
- const PL=(a,b,th,qty)=>a*b*rho*th/1e6*qty;
- const IF=(c,a,b)=>c?a:b;
- return {model,W,D,N,t,pit,oh,rho,H,floors,qN,qD,lenN,lenD,PW,PL,IF,Math,...cfg}
-}
-
-function profileKeyForRow(id){return {col1:'columns',col2:'columns',col3:'columns',col4:'columns',beamN:'beamN',beamD:'beamD',machineN:'machine',machineD:'machine',hanging:'hanging',reinforce:'reinforce',nut1:'nut1',nut2:'nut2'}[id]||''}
-function profileForRow(id,ctx){const model=ctx.model;return state.rowProfiles&&state.rowProfiles[model]&&Array.isArray(state.rowProfiles[model][id])?state.rowProfiles[model][id]:[]}
-
-// THUẬT TOÁN TÍNH KÍNH & TỔNG HỢP THEO MẶT + THEO TẦNG
-function calculateGlassList(ctx){
- const gap=+$('glassGap').value||5;
- const safetyRate=+$('safetyRate').value||0;
- const doorClearW=+$('doorClearWidth').value||600;
- const doorStileW=+$('doorStileWidth').value||50;
- const doorH=+$('doorHeight').value||2300;
- const doorTotalW=doorClearW+(2*doorStileW);
- const frontColDepth = +$('frontColDepth').value || 120;
-
- $('doorTotalBadge').textContent=`Khoảng trống cửa tầng trừ kính: ${doorClearW} + (2 x ${doorStileW}) = ${doorTotalW} mm (Cao ${doorH} mm)`;
-
- const clearW = ctx.W - 240;
- const clearD = ctx.D - (frontColDepth + 120);
-
- const faceNames={front:'Mặt Trước (Cửa)', back:'Mặt Sau', left:'Mặt Hông Trái', right:'Mặt Hông Phải'};
-
- let list=[];
- let totalNetM2=0;
-
- // Khởi tạo biến tổng hợp theo tầng & mặt
- let floorSums={};
- let faceSums={front:0, back:0, left:0, right:0};
-
- function getGlassWidth(type, isW){
-  if(type==='out'){
-   return { w: (isW ? ctx.W : ctx.D) - gap, label: 'Phủ ngoài' };
-  } else {
-   return { w: isW ? clearW : clearD, label: 'Lọt lòng' };
-  }
- }
-
- // 1. TÍNH KÍNH CÁC TẦNG (Tầng 1 -> Tầng N)
- ctx.floors.forEach((fH,idx)=>{
-  const floorNum=idx+1;
-  const floorKey=`f${floorNum}`;
-  floorSums[floorKey]=0;
-
-  // A. Mặt Sau, Trái, Phải
-  ['back','left','right'].forEach(fKey=>{
-   const type=$(`g_f${floorNum}_${fKey}`)?.value||'none';
-   if(type!=='none'){
-    const isW=(fKey==='back');
-    const {w, label}=getGlassWidth(type, isW);
-    let panelH = 1560;
-    let m2Per = (w * panelH) / 1e6;
-    let totalM2Face = m2Per * 2;
-
-    list.push({name:`Kính Tầng ${floorNum} - ${faceNames[fKey]}`,typeLabel:label,qty:2,w:w,h:panelH,m2Per:m2Per,totalM2:totalM2Face});
-    totalNetM2 += totalM2Face;
-    floorSums[floorKey] += totalM2Face;
-    faceSums[fKey] += totalM2Face;
-   }
-  });
-
-  // B. Mặt Trước
-  const frontType=$(`g_f${floorNum}_front`)?.value||'none';
-  if(frontType!=='none'){
-   const {w: gWidthFront, label}=getGlassWidth(frontType, true);
-
-   let transomH = fH - doorH - 460;
-   if(transomH>50){
-    let m2F = (gWidthFront * transomH) / 1e6;
-    list.push({name:`Kính Trán Cửa Tầng ${floorNum} (D${floorNum}) - Mặt Trước`,typeLabel:label,qty:1,w:gWidthFront,h:transomH,m2Per:m2F,totalM2:m2F});
-    totalNetM2 += m2F;
-    floorSums[floorKey] += m2F;
-    faceSums.front += m2F;
-   }
-
-   if(gWidthFront > doorTotalW){
-    let sideW = (gWidthFront - doorTotalW) / 2;
-    let sideH = 2350;
-    if(sideW>50){
-     let m2Side = (sideW * sideH) / 1e6;
-     let totalM2Side = m2Side * 2;
-     list.push({name:`Kính 2 Bên Cửa Tầng ${floorNum} (C${floorNum}) - Mặt Trước`,typeLabel:label,qty:2,w:sideW,h:sideH,m2Per:m2Side,totalM2:totalM2Side});
-     totalNetM2 += totalM2Side;
-     floorSums[floorKey] += totalM2Side;
-     faceSums.front += totalM2Side;
-    }
-   }
-  }
- });
-
- // 2. TÍNH KÍNH KHOANG PM
- floorSums['oh']=0;
- if(ctx.oh>0){
-  ['front','back','left','right'].forEach(fKey=>{
-   const type=$(`g_oh_${fKey}`)?.value||'none';
-   if(type!=='none'){
-    const isW=(fKey==='back'||fKey==='front');
-    const {w, label}=getGlassWidth(type, isW);
-    let hPM = ctx.oh - gap;
-    if(hPM>0){
-     let m2Per = (w * hPM) / 1e6;
-     list.push({name:`Kính PM (Phòng máy) - ${faceNames[fKey]}`,typeLabel:label,qty:1,w:w,h:hPM,m2Per:m2Per,totalM2:m2Per});
-     totalNetM2 += m2Per;
-     floorSums['oh'] += m2Per;
-     faceSums[fKey] += m2Per;
-    }
-   }
-  });
- }
-
- // CẬP NHẬT CÁC Ô TỔNG THEO TẦNG VÀ THEO MẶT LÊN BẢNG MATRIX
- Object.keys(floorSums).forEach(fKey=>{
-  let cell=$(`m_row_${fKey}_sum`);
-  if(cell) cell.textContent = fmt(floorSums[fKey], 2) + ' m²';
- });
-
- $('m_sum_front').textContent = fmt(faceSums.front, 2) + ' m²';
- $('m_sum_back').textContent = fmt(faceSums.back, 2) + ' m²';
- $('m_sum_left').textContent = fmt(faceSums.left, 2) + ' m²';
- $('m_sum_right').textContent = fmt(faceSums.right, 2) + ' m²';
- $('m_sum_all').textContent = fmt(totalNetM2, 2) + ' m²';
-
- const totalGrossM2 = totalNetM2 * (1 + safetyRate / 100);
-
- return {list, totalNetM2, totalGrossM2, safetyRate};
-}
-
-function calculate(){
- try{
-  syncEditorToState();const ctx=context();
-  if([ctx.W,ctx.D,ctx.N,ctx.t,ctx.rho,ctx.H].some(v=>!Number.isFinite(v))||ctx.W<=0||ctx.D<=0||ctx.N<2||ctx.t<=0||ctx.rho<=0)throw new Error('Thông số kỹ thuật không hợp lệ.');
-  let rows=[];document.querySelectorAll('.formula-error').forEach(x=>x.textContent='');
-
-  for(const r of state.rows){
-   try{
-    const rowCtx={...ctx};const pkey=profileKeyForRow(r.id);const rowProfile=profileForRow(r.id,ctx);
-    if(pkey)rowCtx[pkey]=rowProfile;
-    let qty=+evaluator(r.qty,rowCtx),len=evaluator(r.len,rowCtx),body=+evaluator(r.body,rowCtx),plate=+evaluator(r.plate,rowCtx);
-    if(![qty,body,plate].every(Number.isFinite)||(len!==null&&!Number.isFinite(+len)))throw new Error('Kết quả không phải số');
-    rows.push({...r,qty,len:len===null?null:+len,body,plate,profile:rowProfile})
-   }catch(e){
-    let cell=$('err-'+r.id);if(cell)cell.textContent=e.message;throw new Error(`Lỗi công thức "${r.name}": ${e.message}`)
-   }
-  }
-
-  let accessories=[];
-  for(const a of state.accessories){
-   try{let qty=+evaluator(a.qty,ctx);if(!Number.isFinite(qty))throw new Error('Kết quả không phải số');accessories.push({...a,qty})}
-   catch(e){let cell=$('accerr-'+a.id);if(cell)cell.textContent=e.message;throw new Error(`Lỗi phụ kiện "${a.name}": ${e.message}`)}
-  }
-
-  const glassData=calculateGlassList(ctx);
-  const modelSupply=state.supply[ctx.model];
-  const totalWeight=rows.reduce((s,r)=>s+(modelSupply[r.id]?(r.body+r.plate):0),0);
-
-  // Render Thép
-  $('partsBody').innerHTML=rows.map(r=>{
-   const supplied=modelSupply[r.id]!==false;const pkey=profileKeyForRow(r.id);
-   const dims=Array.from({length:6},(_,i)=>{
-    if(r.profile[i]===undefined)return '<td>—</td>';
-    return `<td><input class="profile-dim-input" type="number" step="0.1" data-row-id="${r.id}" data-profile="${pkey}" data-index="${i}" value="${r.profile[i]}"></td>`
-   }).join('');
-   return `<tr class="${supplied?'':'not-supplied'}"><td>${esc(r.name)}</td><td style="text-align:center"><input class="supply-check" type="checkbox" data-row-id="${r.id}" ${supplied?'checked':''}></td><td>${intFmt(r.qty)}</td><td>${r.len===null?'—':intFmt(r.len)}</td>${dims}<td>${r.body?fmt(r.body,2):'—'}</td><td>${r.plate?fmt(r.plate,2):'—'}</td><td><strong>${supplied?fmt(r.body+r.plate,2):'0.00'}</strong></td></tr>`
-  }).join('');
-
-  // Render Kính
-  if(glassData.list.length===0){
-   $('glassBody').innerHTML='<tr><td colspan="7" style="text-align:center;color:#64748b">Không chọn lắp kính cho tầng/khoang nào.</td></tr>';
-  }else{
-   $('glassBody').innerHTML=glassData.list.map(g=>`<tr><td>${esc(g.name)}</td><td style="text-align:center"><span class="badge" style="background:${g.typeLabel==='Phủ ngoài'?'#fef3c7':'#dcfce7'};color:${g.typeLabel==='Phủ ngoài'?'#92400e':'#166534'}">${g.typeLabel}</span></td><td>${intFmt(g.qty)}</td><td>${intFmt(g.w)}</td><td>${intFmt(g.h)}</td><td>${fmt(g.m2Per,3)}</td><td><strong>${fmt(g.totalM2,3)}</strong></td></tr>`).join('');
-  }
-
-  // Render Phụ kiện
-  $('accessoryBody').innerHTML=accessories.map(a=>`<tr><td>${esc(a.name)}</td><td>${intFmt(a.qty)}</td><td>${esc(a.unit)}</td></tr>`).join('');
-
-  // Cập nhật KPIs
-  $('totalHeight').textContent=intFmt(ctx.H)+' mm';
-  $('totalWeight').textContent=intFmt(totalWeight)+' kg';
-  $('tableTotal').textContent=intFmt(totalWeight)+' kg';
-  $('totalGlassM2').textContent=fmt(glassData.totalGrossM2,2)+' m²';
-  $('tableGlassNetTotal').textContent=fmt(glassData.totalNetM2,3)+' m²';
-  $('tableGlassTotal').textContent=fmt(glassData.totalGrossM2,2)+' m²';
-  $('safetyLabel').textContent=glassData.safetyRate+'%';
-  $('kpiModel').textContent=ctx.model===1?'KT-Mẫu 1':'KT-Mẫu 2';
-  $('modelBadge').textContent=ctx.model===1?'KT-Mẫu 1 (Tiêu chuẩn)':'KT-Mẫu 2 (Không nẹp sập)';
-  $('error').style.display='none';
- }catch(e){$('error').style.display='block';$('error').textContent=e.message}
-}
-
-function resetInputs(){
- state=clone(ORIGINAL);state.rowProfiles=makeDefaultRowProfiles();localStorage.removeItem('frameFormulaStateV2');
- $('model').value=1;$('width').value=1390;$('depth').value=1720;$('floorCount').value=4;$('thickness').value=4;$('pit').value=1040;$('oh').value=0;$('density').value=7.85;
- $('doorClearWidth').value=600;$('doorStileWidth').value=50;$('doorHeight').value=2300;$('glassGap').value=5;$('frontColDepth').value=120;$('safetyRate').value=0;
- buildFloorInputs();renderFormulaEditor();$('saveStatus').textContent='';calculate();
-}
-
-function resetFormulas(){state=clone(ORIGINAL);state.rowProfiles=makeDefaultRowProfiles();localStorage.removeItem('frameFormulaStateV2');renderFormulaEditor();$('formulaStatus').textContent='Đang dùng công thức gốc';$('formulaStatus').classList.remove('changed');$('saveStatus').textContent='';calculate()}
-
-document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));document.querySelectorAll('.tab-content').forEach(x=>x.classList.remove('active'));b.classList.add('active');$(b.dataset.tab).classList.add('active')});
-$('floorCount').addEventListener('change',()=>{buildFloorInputs();calculate()});
-$('model').addEventListener('change',()=>{renderFormulaEditor();calculate()});
-$('calculate').onclick=calculate;
-$('resetInputs').onclick=resetInputs;
-$('saveFormulas').onclick=()=>{try{syncEditorToState();saveState();calculate()}catch(e){$('error').style.display='block';$('error').textContent=e.message}};
-$('resetFormulas').onclick=resetFormulas;
-
-function saveProfileInput(input){
- const model=+$('model').value,rowId=input.dataset.rowId,idx=+input.dataset.index,val=+input.value;
- if(!rowId||!Number.isFinite(val))return false;
- if(!state.rowProfiles)state.rowProfiles=makeDefaultRowProfiles();
- if(!state.rowProfiles[model])state.rowProfiles[model]={};
- if(!Array.isArray(state.rowProfiles[model][rowId]))state.rowProfiles[model][rowId]=[];
- state.rowProfiles[model][rowId][idx]=val;
- input.classList.add('changed');
- localStorage.setItem('frameFormulaStateV2',JSON.stringify(state));
- $('saveStatus').textContent='Đã lưu biên dạng';
- return true;
-}
-
-document.querySelectorAll('.view-mode-btn').forEach(btn=>{
- btn.addEventListener('click', ()=>{
-  document.querySelectorAll('.view-mode-btn').forEach(b=>b.classList.remove('active'));
-  btn.classList.add('active');
-  const mode=btn.dataset.mode;
-  document.body.className=`mode-${mode}`;
- });
-});
-
-document.addEventListener('change',e=>{
- if(e.target.matches('.supply-check')){
-  const model=+$('model').value,id=e.target.dataset.rowId;
-  state.supply[model][id]=e.target.checked;
-  localStorage.setItem('frameFormulaStateV2',JSON.stringify(state));
-  calculate();
- }
- if(e.target.matches('.floor-quick-select')){
-  const floorKey=e.target.dataset.floor;
-  const selectedVal=e.target.value;
-  if(selectedVal){
-   ['front','back','left','right'].forEach(fKey=>{
-    const el=$(`g_${floorKey}_${fKey}`);
-    if(el) el.value=selectedVal;
-   });
-   e.target.value="";
-   calculate();
-  }
- }
- if(e.target.matches('.glass-matrix-select')){
-  calculate();
- }
-});
-
-document.addEventListener('input',e=>{
- if(e.target.matches('.profile-dim-input')){saveProfileInput(e.target);return}
- if(e.target.matches('#width,#depth,#floorCount,#thickness,#pit,#oh,#density,#doorClearWidth,#doorStileWidth,#doorHeight,#glassGap,#frontColDepth,#safetyRate,.floor-height,#glassType')){
-  clearTimeout(window.ct);window.ct=setTimeout(calculate,350);
- }
-});
-
-document.addEventListener('focusout',e=>{if(e.target.matches('.profile-dim-input')&&saveProfileInput(e.target)){setTimeout(calculate,0)}});
-document.addEventListener('keydown',e=>{if(e.target.matches('.profile-dim-input')&&e.key==='Enter'){e.preventDefault();saveProfileInput(e.target);e.target.blur()}});
-
-loadState();buildFloorInputs();renderFormulaEditor();if(localStorage.getItem('frameFormulaStateV2')){$('formulaStatus').textContent='Đã nạp công thức tùy chỉnh';$('formulaStatus').classList.add('changed');$('saveStatus').textContent='Đã lưu biên dạng'}calculate();
+buildFloors();
 </script>
-</body></html>
+</body>
+</html>
